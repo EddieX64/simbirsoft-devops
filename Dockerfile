@@ -1,11 +1,9 @@
-FROM python:latest
+FROM python:3.6
 
-WORKDIR /flaskex
+WORKDIR /Flaskex
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN git clone https://github.com/anfederico/Flaskex & pip install -r Flaskex/requirements.txt
 
-COPY /flaskex .
-
-CMD ["python", "app.py"]
+EXPOSE 5000
+CMD ["python", "Flaskex/app.py"]
 

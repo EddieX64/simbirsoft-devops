@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  
+  - name: install_packages
+    apt: 
+      name: ['python-apt', 'python', 'python3', 'python-pip', 'python3-pip', 'python-setuptools', 'git']
+      state: present
+      update_cache: True
+      
+  - name: clone_git_repo
+    git:
+      repo: 'https://github.com/anfederico/Flaskex'
+      dest: /opt/Flaskex/
+      update: yes
+      
+  - name: install_requirements
+    pip:
+      requirements: /opt/Flaskex/requirements.txt
